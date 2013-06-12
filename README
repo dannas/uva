@@ -1,1 +1,36 @@
 My solutions to ACM Uva contest problems
+
+Files with names consisting of numbers, refers to "problem numbers", used in
+the uhunt API [1]. I.e. the file 401.cc has "problem number" 401 but "problem
+id" 342 which can be used when submitting the solution to  the UVA online
+judge [2].
+
+### What does the second last category, 4,  represent in [3]? How fetch it?
+
+$ curl http://uhunt.felix-halim.net/api/p/num/401
+{
+    "pid":342,
+    "num":401,
+    "title":"Palindromes",
+    "dacu":7494,
+    "mrun":0,"
+    mmem":1000000000,
+    "nover":0,
+    "sube":532,
+    "noj":0,
+    "inq":0,
+    "ce":3939,
+    "rf":0,
+    "re":1402,
+    "ole":0,
+    "tle":666,
+    "mle":23,
+    "wa":22279,
+    "pe":1523,
+    "ac":10096,
+    "rtl":3000
+}
+
+[1] http://uhunt.felix-halim.net/api
+[2] http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=25&page=submit_problem
+[3] http://uva.onlinejudge.org/external/4/401.html
