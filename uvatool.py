@@ -1,3 +1,4 @@
+from HTMLParser import HTMLParser
 from difflib import unified_diff
 from subprocess import Popen, PIPE
 from urllib2 import urlopen
@@ -11,8 +12,25 @@ USERID =    178401
 
 URL_PREFIX = 'http://uva.onlinejudge.org/external/'
 
+class HtmlImageDownloader(HTMLParser):
+    def __init__(self, dir, urldir):
+        HTMLParser.__init__(self)
+        self.dir = dir
+        self.urldir = urldir
+
+    def handle_starttag(self, tag, attrs):
+        if tag == 'img':
+            for key,fname in attrs:
+                if key == 'src':
+                    url = os.path.join(self.urldir, fname)
+                    path = os.path.join(self.dir, fname)
+                    download(path, url)
+
 def fname(problemid):
     return '%d/%d.html' % (problemid / 100, problemid)
+
+def dname(problemid):
+    return '%d' % (problemid / 100)
 
 def create_dir(path):
     dir = os.path.dirname(path)
@@ -20,17 +38,24 @@ def create_dir(path):
         os.makedirs(dir)
 
 def download(path, url):
-    response = urlopen(os.path.join(URL_PREFIX, fname(problemid)))
+    response = urlopen(url)
     payload = response.read()
     create_dir(path)
     with open(path, 'w+') as f:
         f.write(payload)
 
+def download_problem(path, url):
+    download(path, url)
+    payload = open(path).read()
+    urldir = os.path.join(URL_PREFIX, dname(problemid))
+    d = HtmlImageDownloader(os.path.dirname(path), urldir)
+    d.feed(payload)
+
 def view(problemid):
     path =  os.path.join('problem', fname(problemid))
     if not os.path.exists(path):
         url = os.path.join(URL_PREFIX, fname(problemid))
-        download(path, url)
+        download_problem(path, url)
     subprocess.call(['firefox', path])
 
 def testcases(infile):
