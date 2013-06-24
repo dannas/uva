@@ -3,3 +3,4 @@
 !README
 !*.cc
 !.gitignore
+!uvatool.py
