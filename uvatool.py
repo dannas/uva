@@ -26,6 +26,41 @@ class HtmlImageDownloader(HTMLParser):
                     path = os.path.join(self.dir, fname)
                     download(path, url)
 
+DEFAULT, INPUT_HEADER_SEEN, OUTPUT_HEADER_SEEN = (0, 1, 2)
+
+class HtmlTestcaseCollector(HTMLParser):
+    def __init__(self):
+        HTMLParser.__init__(self)
+        self.input = []
+        self.output = []
+        self.title = ''
+        self.tag = ''
+        self.inheader = False
+        self.state = DEFAULT
+
+    def handle_starttag(self, tag, attrs):
+        self.tag = tag
+        if tag == 'h2':
+            self.inheader = True
+
+    def handle_endtag(self, tag):
+        if tag == 'h2':
+            self.inheader = False
+
+    def handle_data(self, data):
+        if self.tag == 'title':
+            self.title = data
+        elif self.inheader and data.lower() == 'sample input':
+            self.state = INPUT_HEADER_SEEN
+        elif self.inheader and data.lower() == 'sample output':
+            self.state = OUTPUT_HEADER_SEEN
+        elif self.tag == 'pre' and self.state == INPUT_HEADER_SEEN:
+            self.input = data.split('\n')
+            self.state = DEFAULT
+        elif self.tag == 'pre' and self.state == OUTPUT_HEADER_SEEN:
+            self.output = data.split('\n')
+            self.state = DEFAULT
+
 def fname(problemid):
     return '%d/%d.html' % (problemid / 100, problemid)
 
@@ -103,9 +138,42 @@ def test(problemid):
     for case in testcases(infile):
         runtest(case, binary)
 
+TEMPLATE = """
+// %d - %s
+
+%s
+
+%s
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+}
+"""
+
+def edit(problemid):
+    path = os.path.abspath(str(problemid)) + '.cc'
+    if not os.path.exists(path):
+        htmlfile = os.path.join('problem', fname(problemid))
+        c = HtmlTestcaseCollector()
+        with open(htmlfile) as f:
+            c.feed(f.read())
+        input = '\n'.join(['// < ' + line for line in c.input])
+        output = '\n'.join(['// > ' + line for line in c.output])
+        content = TEMPLATE % (problemid, c.title, input, output)
+        with open(path, 'w+') as f:
+            f.write(content)
+    subprocess.call(['vi', path])
+
 # TODO(dannas): Use argparse
 problemid = int(sys.argv[2])
 if sys.argv[1] == "view":
     view(problemid)
 elif sys.argv[1] == "test":
     test(problemid)
+elif sys.argv[1] == "edit":
+    edit(problemid)
+
