@@ -13,18 +13,13 @@ USERID =    178401
 URL_PREFIX = 'http://uva.onlinejudge.org/external/'
 
 class HtmlImageDownloader(HTMLParser):
-    def __init__(self, dir, urldir):
+    def __init__(self):
         HTMLParser.__init__(self)
-        self.dir = dir
-        self.urldir = urldir
+        self.fnames = []
 
     def handle_starttag(self, tag, attrs):
         if tag == 'img':
-            for key,fname in attrs:
-                if key == 'src':
-                    url = os.path.join(self.urldir, fname)
-                    path = os.path.join(self.dir, fname)
-                    download(path, url)
+            self.fnames += [val for key, val in attrs if key == 'src']
 
 DEFAULT, INPUT_HEADER_SEEN, OUTPUT_HEADER_SEEN = (0, 1, 2)
 
@@ -80,11 +75,15 @@ def download(path, url):
         f.write(payload)
 
 def download_problem(path, url):
+    join = os.path.join
     download(path, url)
     payload = open(path).read()
-    urldir = os.path.join(URL_PREFIX, dname(problemid))
-    d = HtmlImageDownloader(os.path.dirname(path), urldir)
+    urldir = join(URL_PREFIX, dname(problemid))
+    dirpath = os.path.dirname(path)
+    d = HtmlImageDownloader()
     d.feed(payload)
+    for f in d.fnames:
+        download(join(dirpath, f), join(urldir, f))
 
 def view(problemid):
     path =  os.path.join('problem', fname(problemid))
