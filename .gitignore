@@ -1,6 +1,3 @@
-*
-!Makefile
-!README
-!*.cc
-!.gitignore
-!uvatool.py
+obj
+problem
+*.swp
