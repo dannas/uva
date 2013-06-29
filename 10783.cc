@@ -1,8 +1,20 @@
+
+// 10783 - Odd Sum
+
+// < 2
+// < 1
+// < 5
+// < 3
+// < 5
+
+// > Case 1: 9
+// > Case 2: 8
+
 #include <iostream>
 
 using namespace std;
 
-int main(int argc, const char *argv[])
+int main()
 {
     int ncases;
     cin >> ncases;
@@ -15,6 +27,4 @@ int main(int argc, const char *argv[])
         }
         cout << "Case " << i+1 << ": " << sum << "\n";
     }
-
-    return 0;
 }
