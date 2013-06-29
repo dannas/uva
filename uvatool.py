@@ -153,7 +153,7 @@ def runtest(case, fname):
 
 def test(problemid):
     binary = os.path.abspath(os.path.join('obj', str(problemid)))
-    fname = os.path.abspath(str(problemid))
+    fname = os.path.abspath(os.path.join('src', str(problemid)))
     infile = open(fname + '.cc')
     for case in testcases(infile):
         runtest(case, binary)
