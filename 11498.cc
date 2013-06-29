@@ -1,3 +1,26 @@
+// 11498 - Division of Nlogonia
+
+// < 3
+// < 2 1
+// < 10 10
+// < -10 1
+// < 0 33
+// < 4
+// < -1000 -1000
+// < -1000 -1000
+// < 0 0
+// < -2000 -10000
+// < -999 -1001
+// < 0
+
+// > NE
+// > divisa
+// > NO
+// > divisa
+// > NE
+// > SO
+// > SE
+
 #include <iostream>
 
 using namespace std;
