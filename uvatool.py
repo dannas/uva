@@ -43,6 +43,7 @@ class HtmlTestcaseCollector(HTMLParser):
             self.inheader = False
 
     def handle_data(self, data):
+        data = data.strip()
         if self.tag == 'title':
             self.title = data
         elif self.inheader and data.lower() == 'sample input':
