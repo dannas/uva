@@ -1,3 +1,13 @@
+// 483 - Word Scramble
+
+// < I love you.
+// < You love me.
+// < We're a happy family.
+
+// > I evol .uoy
+// > uoY evol .em
+// > er'eW a yppah .ylimaf
+
 #include <iostream>
 #include <sstream>
 #include <algorithm>
@@ -5,7 +15,7 @@
 
 using namespace std;
 
-int main(int argc, const char *argv[])
+int main()
 {
     string line;
 
@@ -27,6 +37,4 @@ int main(int argc, const char *argv[])
         }
         cout << "\n";
     }
-
-    return 0;
 }
