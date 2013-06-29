@@ -1,9 +1,16 @@
+
+// 10082 - WERTYU
+
+// < O S, GOMR YPFSU/
+
+// > I AM FINE TODAY.
+
 #include <iostream>
 #include <map>
 
 using namespace std;
 
-int main(int argc, const char *argv[])
+int main()
 {
     map<char, char> m;
 
@@ -62,6 +69,4 @@ int main(int argc, const char *argv[])
         else
             cout.put(m[c]);
     }
-
-    return 0;
 }
