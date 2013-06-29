@@ -1,3 +1,11 @@
+// 102 - Ecological Bin Packing
+
+// < 1 2 3 4 5 6 7 8 9
+// < 5 10 5 20 10 5 10 20 10
+
+// > BCG 30
+// > CBG 50
+
 #include <iostream>
 #include <map>
 #include <algorithm>
@@ -38,7 +46,7 @@ string min(map<string, int> &m)
     return order;
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     cm['B'] = 0;            // Brown
     cm['G'] = 1;            // Green
@@ -58,6 +66,4 @@ int main(int argc, const char *argv[])
         string order = min(m);
         cout << order << " " << m[order] << "\n";
     }
-
-    return 0;
 }
