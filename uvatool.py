@@ -47,7 +47,8 @@ class HtmlTestcaseCollector(HTMLParser):
             self.title = data
         elif self.inheader and data.lower() == 'sample input':
             self.state = INPUT_HEADER_SEEN
-        elif self.inheader and data.lower() == 'sample output':
+        elif self.inheader and (data.lower() == 'sample output' or
+                data.lower() == 'output for sample input'):
             self.state = OUTPUT_HEADER_SEEN
         elif self.tag == 'pre' and self.state == INPUT_HEADER_SEEN:
             self.input = data.split('\n')
