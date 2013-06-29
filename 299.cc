@@ -1,3 +1,18 @@
+
+// 299 -  Train Swapping
+
+// < 3
+// < 3
+// < 1 3 2
+// < 4
+// < 4 3 2 1
+// < 2
+// < 2 1
+
+// > Optimal train swapping takes 1 swaps.
+// > Optimal train swapping takes 6 swaps.
+// > Optimal train swapping takes 1 swaps.
+
 #include <iostream>
 #include <vector>
 #include <sstream>
@@ -13,7 +28,7 @@ void exch(std::vector<int> &v, int i, int j)
     v[j] = t;
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     int ncases;
     cin >> ncases;
@@ -42,5 +57,4 @@ int main(int argc, const char *argv[])
         }
         cout << "Optimal train swapping takes " << nswaps << " swaps.\n";
     }
-    return 0;
 }
