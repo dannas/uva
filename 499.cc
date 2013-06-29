@@ -1,3 +1,15 @@
+// 499 - What's The Frequency, Kenneth?
+
+// < When riding your bicycle backwards down a one-way street, if the
+// < wheel falls of a canoe, how many ball bearings does it take to fill
+// < up a water buffalo?
+// < Hello Howard.
+
+// > e 6
+// > al 7
+// > a 3
+// > Hlo 2
+
 #include <iostream>
 #include <map>
 #include <algorithm>
@@ -27,7 +39,7 @@ int max(Chartab &t)
     return i->second;
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     string line;
 
@@ -46,6 +58,4 @@ int main(int argc, const char *argv[])
         // Assume line.size() > 0
         cout << " " << freq << "\n";
     }
-
-    return 0;
 }
