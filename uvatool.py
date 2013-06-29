@@ -158,7 +158,7 @@ def runtest(case, fname):
     diff = list(diff)
 
     if diff:
-        print '%s %sFAIL%s %d' % (os.path.basename(fname), FAILURE, ENDC, len(diff))
+        print '%s %sFAIL%s' % (os.path.basename(fname), FAILURE, ENDC)
         print '\n'.join(list(diff))
     else:
         print '%s %sPASS%s' % (os.path.basename(fname), SUCCESS, ENDC)
