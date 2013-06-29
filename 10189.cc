@@ -1,3 +1,27 @@
+// 10189 - Minesweeper
+
+// < 4 4
+// < *...
+// < ....
+// < .*..
+// < ....
+// < 3 5
+// < **...
+// < .....
+// < .*...
+// < 0 0
+
+// > Field #1:
+// > *100
+// > 2210
+// > 1*10
+// > 1110
+// > 
+// > Field #2:
+// > **100
+// > 33200
+// > 1*100
+
 #include <iostream>
 
 using namespace std;
@@ -37,7 +61,7 @@ int neighbours(char **a, int row, int col)
     return n;
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     int nfields = 1;
     while (cin >> n >> m) {
@@ -77,6 +101,4 @@ int main(int argc, const char *argv[])
             delete[] a[i];
         delete[] a;
     }
-
-    return 0;
 }
