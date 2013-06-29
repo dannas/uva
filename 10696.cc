@@ -1,3 +1,12 @@
+// 10696 - f91
+
+// < 500
+// < 91
+// < 0
+
+// > f91(500) = 490
+// > f91(91) = 91
+
 #include <iostream>
 #include <map>
 
@@ -20,13 +29,10 @@ int f91(int N)
     return x;
 }
 
-
-int main(int argc, const char *argv[])
+int main()
 {
     int N;
 
     while (cin >> N && N != 0)
         cout << "f91(" << N << ") = " << f91(N) << "\n";
-    
-    return 0;
 }
