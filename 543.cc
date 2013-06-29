@@ -1,3 +1,14 @@
+// 543 - Goldbach's Conjecture
+
+// < 8
+// < 20
+// < 42
+// < 0
+
+// > 8 = 3 + 5
+// > 20 = 3 + 17
+// > 42 = 5 + 37
+
 #include <set>
 #include <iostream>
 
@@ -20,7 +31,7 @@ bool isoddprime(int d)
 
 bool odd(int d) { return d & 0x01; }
 
-int main(int argc, const char *argv[])
+int main()
 {
     int n;
 
@@ -34,5 +45,4 @@ int main(int argc, const char *argv[])
             }
         }
     }
-    return 0;
 }
