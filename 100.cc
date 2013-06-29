@@ -1,3 +1,15 @@
+// 100 - The 3n + 1 problem
+
+// < 1 10
+// < 100 200
+// < 201 210
+// < 900 1000
+
+// > 1 10 20
+// > 100 200 125
+// > 201 210 89
+// > 900 1000 174
+
 #include <iostream>
 #include <climits>
 
@@ -29,11 +41,10 @@ int calcmax(int i, int j)
     return m;
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     int i, j;
 
     while (cin >> i >> j)
         cout << i << " " << j << " " << calcmax(i, j) << "\n";
-    return 0;
 }
