@@ -1,3 +1,25 @@
+// 10008 - What's Cryptanalysis
+
+// < 3
+// < This is a test.
+// < Count me 1 2 3 4 5.
+// < Wow!!!!  Is this question easy?
+
+// > S 7
+// > T 6
+// > I 5
+// > E 4
+// > O 3
+// > A 2
+// > H 2
+// > N 2
+// > U 2
+// > W 2
+// > C 1
+// > M 1
+// > Q 1
+// > Y 1
+
 #include <algorithm>
 #include <iostream>
 #include <map>
@@ -18,7 +40,7 @@ bool cmp(Nameval x, Nameval y)
     return x.first < y.first;
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     char c;
     vector<Nameval> v;
@@ -34,6 +56,4 @@ int main(int argc, const char *argv[])
     vector<Nameval>::iterator i;
     for (i = v.begin(); i != v.end(); ++i)
         cout << i->first << " " << i->second << "\n";
-
-    return 0;
 }
