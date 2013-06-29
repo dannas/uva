@@ -1,3 +1,14 @@
+// 10018 - Reverse and Add
+
+// < 3
+// < 195
+// < 265
+// < 750
+
+// > 4 9339
+// > 5 45254
+// > 3 6666 
+
 #include <iostream>
 #include <sstream>
 
@@ -35,7 +46,7 @@ long reverse(long x)
     return x;
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     int ncases;
     cin >> ncases;
@@ -52,5 +63,4 @@ int main(int argc, const char *argv[])
         }
         cout << n << " " << p << "\n";
     }
-    return 0;
 }
