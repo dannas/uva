@@ -34,6 +34,7 @@ class HtmlTestcaseCollector(HTMLParser):
         self.output = []
         self.title = ''
         self.tag = ''
+        self.intitle = False
         self.inheader = False
         self.state = DEFAULT
 
@@ -41,15 +42,28 @@ class HtmlTestcaseCollector(HTMLParser):
         self.tag = tag
         if tag == 'h2' or tag == 'h3':
             self.inheader = True
+        if tag == 'title':
+            self.intitle = True
 
     def handle_endtag(self, tag):
         if tag == 'h2' or tag == 'h3':
             self.inheader = False
+        if tag == 'title':
+            self.intitle = False
 
     def handle_data(self, data):
         data = data.strip()
-        if self.tag == 'title':
+        if self.intitle:
             self.title = data
+            # A precaution - The HtmlParser calls handle_data twice for some
+            # problem descriptions while inside the title tag. One example is
+            # 10041, where...
+            #
+            #    <HEAD>
+            #    <TITLE>Problem C: Vito's family</TITLE>
+            #
+            # .. handle_data() is called a second time with data=''
+            self.intitle = False
         elif self.inheader and data.lower() == 'sample input':
             self.state = INPUT_HEADER_SEEN
         elif self.inheader and (data.lower() == 'sample output' or
