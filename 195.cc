@@ -1,3 +1,35 @@
+// 195 - Anagram
+
+// < 3
+// < aAb
+// < abc
+// < acba
+
+// > Aab
+// > Aba
+// > aAb
+// > abA
+// > bAa
+// > baA
+// > abc
+// > acb
+// > bac
+// > bca
+// > cab
+// > cba
+// > aabc
+// > aacb
+// > abac
+// > abca
+// > acab
+// > acba
+// > baac
+// > baca
+// > bcaa
+// > caab
+// > caba
+// > cbaa
+
 #include <iostream>
 #include <algorithm>
 #include <cmath>
@@ -14,7 +46,7 @@ bool comp(char a, char b)
     return tolower(a) < tolower(b);
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     int unused;
     cin >> unused;
@@ -27,5 +59,4 @@ int main(int argc, const char *argv[])
             cout << word << "\n";
         } while (next_permutation(word.begin(), word.end()));
     }
-    return 0;
 }
