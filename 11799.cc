@@ -1,12 +1,20 @@
+// 11799 - horror dash
+
+// < 2
+// < 5 9 3 5 2 6
+// < 1 2
+
+// > Case 1: 9
+// > Case 2: 2
+
 #include <iostream>
 #include <sstream>
 #include <vector>
 #include <climits>
 
-
 using namespace std;
 
-int main(int argc, const char *argv[])
+int main()
 {
     int N;
 
@@ -29,5 +37,4 @@ int main(int argc, const char *argv[])
         }
         cout << "Case " << i << ": " << min << "\n";
     }
-    return 0;
 }

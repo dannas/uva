@@ -1,5 +1,6 @@
 """
 TODO: Don't strip leading whitespace when testing
+TODO: Find out why HtmlParser chokes on some problem desc, i.e. 11799
 """
 
 from HTMLParser import HTMLParser
