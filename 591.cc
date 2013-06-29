@@ -1,10 +1,19 @@
+// 591 - Box of Bricks
+
+// < 6
+// < 5 2 4 1 7 5
+// < 0
+
+// > Set #1
+// > The minimum number of moves is 5.
+
 #include <iostream>
 #include <sstream>
 #include <vector>
 
 using namespace std;
 
-int main(int argc, const char *argv[])
+int main()
 {
     int n;
     int nsets = 0;
@@ -33,6 +42,4 @@ int main(int argc, const char *argv[])
 
         cout << "The minimum number of moves is " << moves << ".\n\n";
     }
-
-    return 0;
 }
