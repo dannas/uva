@@ -1,8 +1,19 @@
+// 10035 - Primary Arithmetic
+
+// < 123 456
+// < 555 555
+// < 123 594
+// < 0 0
+
+// > No carry operation.
+// > 3 carry operations.
+// > 1 carry operation.
+
 #include <iostream>
 
 using namespace std;
 
-int main(int argc, const char *argv[])
+int main()
 {
     unsigned x, y;
 
@@ -29,5 +40,4 @@ int main(int argc, const char *argv[])
         else
             cout << "No carry operation.\n";
     }
-    return 0;
 }
