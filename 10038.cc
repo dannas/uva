@@ -1,3 +1,16 @@
+
+// 10038 - Jolly jumpers
+
+// < 
+// < 4 1 4 2 3
+// < 5 1 4 2 -1 6
+// < 
+
+// > 
+// > Jolly
+// > Not jolly
+// > 
+
 #include <iostream>
 #include <vector>
 #include <sstream>
@@ -6,7 +19,7 @@
 
 using namespace std;
 
-int main(int argc, const char *argv[])
+int main()
 {
     string line; 
 
