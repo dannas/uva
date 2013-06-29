@@ -35,11 +35,11 @@ class HtmlTestcaseCollector(HTMLParser):
 
     def handle_starttag(self, tag, attrs):
         self.tag = tag
-        if tag == 'h2':
+        if tag == 'h2' or tag == 'h3':
             self.inheader = True
 
     def handle_endtag(self, tag):
-        if tag == 'h2':
+        if tag == 'h2' or tag == 'h3':
             self.inheader = False
 
     def handle_data(self, data):
