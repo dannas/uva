@@ -1,3 +1,22 @@
+// 488 - Triangle Wave
+
+// < 1
+// < 
+// < 3
+// < 2
+
+// > 1
+// > 22
+// > 333
+// > 22
+// > 1
+// > 
+// > 1
+// > 22
+// > 333
+// > 22
+// > 1
+
 #include <iostream>
 
 using namespace std;
@@ -9,7 +28,7 @@ void put(int c)
     cout.put('\n');
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     int ncases;
     cin >> ncases;
@@ -29,5 +48,4 @@ int main(int argc, const char *argv[])
         if (ncases != 0)
             cout << "\n";
     }
-    return 0;
 }
