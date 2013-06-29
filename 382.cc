@@ -1,8 +1,22 @@
+// 382 - Perfection
+
+// < 15 28 6 56 60000 22 496 0
+
+// > PERFECTION OUTPUT
+// >    15  DEFICIENT
+// >    28  PERFECT
+// >     6  PERFECT
+// >    56  ABUNDANT
+// > 60000  ABUNDANT
+// >    22  DEFICIENT
+// >   496  PERFECT
+// > END OF OUTPUT
+
 #include <cstdio>
 
 using namespace std;
 
-int main(int argc, const char *argv[])
+int main()
 {
     int x;
     const char *label;
@@ -24,6 +38,4 @@ int main(int argc, const char *argv[])
         printf("%5d  %s\n", x, label);
     }
     printf("END OF OUTPUT\n");
-    return 0;
-
 }

@@ -1,3 +1,7 @@
+"""
+TODO: Don't strip leading whitespace when testing
+"""
+
 from HTMLParser import HTMLParser
 from difflib import unified_diff
 from subprocess import Popen, PIPE
