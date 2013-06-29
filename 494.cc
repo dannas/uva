@@ -1,10 +1,21 @@
-#include <iostream>
+// 494 -  Kindergarten Counting Game
 
+// < Meep Meep!
+// < I tot I taw a putty tat.
+// < I did! I did! I did taw a putty tat.
+// < Shsssssssssh ... I am hunting wabbits. Heh Heh Heh Heh ...
+
+// > 2
+// > 7
+// > 10
+// > 9
+
+#include <iostream>
 #include <cctype>
 
 using namespace std;
 
-int main(int argc, const char *argv[])
+int main()
 {
     string line;
     while (getline(cin, line)) {
@@ -20,5 +31,4 @@ int main(int argc, const char *argv[])
         }
         cout << n << "\n";
     }
-    return 0;
 }
