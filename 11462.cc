@@ -1,10 +1,21 @@
+// 11462 - Age Sort
+
+// < 5
+// < 3 4 2 1 5
+// < 5
+// < 2 3 2 3 1
+// < 0
+
+// > 1 2 3 4 5
+// > 1 2 2 3 3
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
 
 using namespace std;
 
-int main(int argc, const char *argv[])
+int main()
 {
     int n;
 
@@ -24,5 +35,4 @@ int main(int argc, const char *argv[])
         }
         cout << "\n";
     }
-    return 0;
 }
