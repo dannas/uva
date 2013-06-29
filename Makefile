@@ -1,5 +1,7 @@
 OBJDIR = obj
-PROGRAMS = $(patsubst %.cc, $(OBJDIR)/%, $(wildcard *.cc))
+SRCDIR = src
+SOURCES = $(wildcard $(SRCDIR)/*.cc)
+PROGRAMS = $(patsubst $(SRCDIR)/%.cc, $(OBJDIR)/%, $(SOURCES))
 CPPFLAGS = -Wall -g -lm
 RM = rm -rf
 
@@ -14,7 +16,7 @@ $(PROGRAMS): | $(OBJDIR)
 $(OBJDIR):
 	mkdir -p $@
 
-$(OBJDIR)/%: %.cc
+$(OBJDIR)/%: $(SRCDIR)/%.cc
 	g++ $(CPPFLAGS) $^ -o $@
 
 clean:
