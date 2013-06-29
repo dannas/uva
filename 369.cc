@@ -1,3 +1,14 @@
+// 369 - Combinations
+
+// < 100  6
+// < 20  5
+// < 18  6
+// <  0  0
+
+// > 100 things taken 6 at a time is 1192052400 exactly.
+// > 20 things taken 5 at a time is 15504 exactly.
+// > 18 things taken 6 at a time is 18564 exactly.
+
 #include <iostream>
 #include <vector>
 #include <numeric>
@@ -5,7 +16,7 @@
 
 using namespace std;
 
-int main(int argc, const char *argv[])
+int main()
 {
     int N, M;
 
@@ -41,7 +52,5 @@ int main(int argc, const char *argv[])
 
         cout << N << " things taken " << M << " at a time is " << C
                 << " exactly.\n";
-
     }
-    return 0;
 }
