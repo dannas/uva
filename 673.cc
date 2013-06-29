@@ -1,3 +1,14 @@
+// 673 - Parentheses Balance
+
+// < 3
+// < ([])
+// < (([()])))
+// < ([()[]()])()
+
+// > Yes
+// > No
+// > Yes
+
 #include <iostream>
 #include <stack>
 
@@ -11,7 +22,7 @@ bool contains(stack<char> &stack, char c)
     return found;
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     string line;
     getline(cin, line);     // ignore first line
@@ -36,5 +47,4 @@ int main(int argc, const char *argv[])
         else
             cout << "No\n";
     }
-    return 0;
 }
