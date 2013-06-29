@@ -1,9 +1,25 @@
+// 11559 - Event Planning
+
+// < 3 1000 2 3
+// < 200
+// < 0 2 2
+// < 300
+// < 27 3 20
+// < 5 2000 2 4
+// < 300
+// < 4 3 0 4
+// < 450
+// < 7 8 0 13
+
+// > 900
+// > stay home
+
 #include <iostream>
 #include <climits>
 
 using namespace std;
 
-int main(int argc, const char *argv[])
+int main()
 {
     int np, budget, nhotels, nweeks;
 
@@ -24,6 +40,4 @@ int main(int argc, const char *argv[])
         else
             cout << minprice << "\n";
     }
-
-    return 0;
 }
