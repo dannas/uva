@@ -1,8 +1,19 @@
+// 11172 - Relational operators
+
+// < 3
+// < 10 20
+// < 20 10
+// < 10 10
+
+// > < 
+// > > 
+// > =
+
 #include <iostream>
 
 using namespace std;
 
-int main(int argc, const char *argv[])
+int main()
 {
     int N;
     cin >> N;
@@ -16,5 +27,4 @@ int main(int argc, const char *argv[])
         else             cout << ">";
         cout << "\n";
     }
-    return 0;
 }
