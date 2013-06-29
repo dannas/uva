@@ -1,3 +1,22 @@
+// 575 - Skew Binary
+
+// < 10120
+// < 200000000000000000000000000000
+// < 10
+// < 1000000000000000000000000000000
+// < 11
+// < 100
+// < 11111000001110000101101102000
+// < 0
+
+// > 44
+// > 2147483646
+// > 3
+// > 2147483647
+// > 4
+// > 7
+// > 1041110737
+
 #include <iostream>
 #include <algorithm>
 
@@ -5,7 +24,7 @@
 
 using namespace std;
 
-int main(int argc, const char *argv[])
+int main()
 {
     string line;
 
@@ -19,5 +38,4 @@ int main(int argc, const char *argv[])
         }
         cout << dec << "\n";
     }
-    return 0;
 }
