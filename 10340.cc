@@ -1,8 +1,20 @@
+// 10340 - Problem A: All in All
+
+// < sequence subsequence
+// < person compression
+// < VERDI vivaVittorioEmanueleReDiItalia
+// < caseDoesMatter CaseDoesMatter
+
+// > Yes
+// > No
+// > Yes
+// > No
+
 #include <iostream>
 
 using namespace std;
 
-int main(int argc, const char *argv[])
+int main()
 {
     string s, t;
 
@@ -23,5 +35,4 @@ int main(int argc, const char *argv[])
         else 
             cout << "No\n";
     }
-    return 0;
 }
