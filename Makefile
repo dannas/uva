@@ -24,5 +24,7 @@ $(OBJDIR)/%: $(SRCDIR)/%.cc
 check: $(PROGRAMS)
 	@for test in $(TESTS) ; do $(TESTRUNNER) $$test || exit 1 ; done
 
+list:
+	@for fname in $(SOURCES) ; do head -n 1 $$fname | sed 's|//||' ; done
 clean:
 	$(RM) $(OBJDIR)
