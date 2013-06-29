@@ -139,17 +139,29 @@ def testcases(infile):
                 output.append(line)
     yield (input, output)
 
+def split(s, sep=None):
+    return [t for t in s.split(sep) if t]
 
 def runtest(case, fname):
+    ENDC = '\033[0;m'
+    FAILURE = '\033[1;31m'
+    SUCCESS = '\033[1;32m'
+
     input, expected = case
     proc = Popen([fname], stdin=PIPE, stdout=PIPE)
 
     val, _ = proc.communicate('\n'.join(input))
 
-    diff = unified_diff(val.split('\n'), expected,
+    diff = unified_diff(split(val,'\n'), expected,
                         fromfile='output', tofile='expected',
                         lineterm='')
-    print '\n'.join(list(diff))
+    diff = list(diff)
+
+    if diff:
+        print '%s %sFAIL%s %d' % (os.path.basename(fname), FAILURE, ENDC, len(diff))
+        print '\n'.join(list(diff))
+    else:
+        print '%s %sPASS%s' % (os.path.basename(fname), SUCCESS, ENDC)
 
 def test(problemid):
     binary = os.path.abspath(os.path.join('obj', str(problemid)))
@@ -175,7 +187,7 @@ int main()
 """
 
 def edit(problemid):
-    path = os.path.abspath(str(problemid)) + '.cc'
+    path = os.path.abspath(os.path.join('src', str(problemid)) + '.cc')
     if not os.path.exists(path):
         htmlfile = os.path.join('problem', fname(problemid))
         c = HtmlTestcaseCollector()

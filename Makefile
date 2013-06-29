@@ -2,6 +2,8 @@ OBJDIR = obj
 SRCDIR = src
 SOURCES = $(wildcard $(SRCDIR)/*.cc)
 PROGRAMS = $(patsubst $(SRCDIR)/%.cc, $(OBJDIR)/%, $(SOURCES))
+TESTS = $(patsubst $(OBJDIR)/%, %, $(PROGRAMS))
+TESTRUNNER = python uvatool.py test
 CPPFLAGS = -Wall -g -lm
 RM = rm -rf
 
@@ -18,6 +20,9 @@ $(OBJDIR):
 
 $(OBJDIR)/%: $(SRCDIR)/%.cc
 	g++ $(CPPFLAGS) $^ -o $@
+
+check: $(PROGRAMS)
+	@for test in $(TESTS) ; do $(TESTRUNNER) $$test || exit 1 ; done
 
 clean:
 	$(RM) $(OBJDIR)
