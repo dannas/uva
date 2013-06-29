@@ -1,3 +1,12 @@
+// 10041 - Problem C: Vito's family
+
+// < 2
+// < 2 2 4 
+// < 3 2 4 6
+
+// > 2
+// > 4
+
 #include <iostream>
 #include <vector>
 
@@ -17,7 +26,7 @@ vector<int> readints(int N)
     return v;
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     int ncases;
     cin >> ncases;
@@ -41,6 +50,4 @@ int main(int argc, const char *argv[])
         }
         cout << minsum << "\n";
     }
-
-    return 0;
 }
