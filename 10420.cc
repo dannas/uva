@@ -1,10 +1,20 @@
+// 10420 - list of conquests
+
+// < 3
+// < Spain Donna Elvira
+// < England Jane Doe
+// < Spain Donna Anna
+
+// > England 1
+// > Spain 2
+
 #include <iostream>
 #include <map>
 #include <sstream>
 
 using namespace std;
 
-int main(int argc, const char *argv[])
+int main()
 {
     string line;
     map<string, int> countries;
@@ -23,6 +33,4 @@ int main(int argc, const char *argv[])
 
     for (i = countries.begin(); i != countries.end(); ++i)
         cout << i->first << " " << i->second << "\n";
-    
-    return 0;
 }
