@@ -1,3 +1,12 @@
+// 424 - Integer inquiry
+
+// < 123456789012345678901234567890
+// < 123456789012345678901234567890
+// < 123456789012345678901234567890
+// < 0
+
+// > 370370367037037036703703703670
+
 #include <iostream>
 #include <algorithm>
 
@@ -50,7 +59,7 @@ Bigint to_bigint(string s)
     return s;
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     string line;
     Bigint sum;
@@ -60,5 +69,4 @@ int main(int argc, const char *argv[])
         sum = add(sum, x);
     }
     cout << to_string(sum) << "\n";
-    return 0;
 }
