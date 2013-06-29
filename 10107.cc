@@ -1,3 +1,21 @@
+// 10107 - What is the Median?
+
+// < 1
+// < 3
+// < 4
+// < 60
+// < 70
+// < 50
+// < 2
+
+// > 1
+// > 2
+// > 3
+// > 3
+// > 4
+// > 27
+// > 4
+
 #include <iostream>
 #include <queue>
 #include <functional>
@@ -16,7 +34,7 @@ int pop(T &pq)
     return x;
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     int x;
     MaxPq lo;       // <= median
@@ -44,5 +62,4 @@ int main(int argc, const char *argv[])
 
         cout << m << "\n";
     }
-    return 0;
 }
