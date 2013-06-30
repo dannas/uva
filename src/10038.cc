@@ -1,49 +1,49 @@
 // 10038 - Jolly jumpers
 
-// < 
 // < 4 1 4 2 3
 // < 5 1 4 2 -1 6
-// < 
+// < 1 1
+// < 2 1 1
+// < 2 1 2
+// < 2 1 3
+// < 3 1 2 4
 
-// > 
 // > Jolly
 // > Not jolly
-// > 
+// > Jolly
+// > Not jolly
+// > Jolly
+// > Not jolly
+// > Jolly
 
 #include <iostream>
-#include <vector>
-#include <sstream>
-
 #include <cstdlib>
+
+enum { SIZE = 3001 };
 
 using namespace std;
 
 int main()
 {
-    string line; 
+    int N;
 
-    while (getline(cin, line)) {
-        int n, x;
-        vector<int> v;
-        stringstream ss(line);
-        ss >> n;
+    while (cin >> N) {
+        int a[SIZE], tbl[SIZE];
 
-        while (ss >> x)
-            v.push_back(x);
+        for (int i = 0; i < N; i++)
+            cin >> a[i];
 
-        bool tbl[n];
-
-        for (int i = 0; i < n; i++)
+        for (int i = 1; i < N; i++)
             tbl[i] = false;
 
-        for (int i = 1; i < n; i++) {
-            int diff = abs(v[i] - v[i-1]);
-            if (diff > 0 && diff < n)
+        for (int i = 1; i < N; i++) {
+            int diff = abs(a[i] - a[i-1]);
+            if (diff > 0 && diff < N)
                 tbl[diff] = true;
         }
 
         bool jolly = true;
-        for (int i = 1; i < n; i++)
+        for (int i = 1; i < N; i++)
             if (tbl[i] == false)
                 jolly = false;
         if (jolly)
@@ -51,5 +51,4 @@ int main()
         else
             cout << "Not jolly\n";
     }
-    return 0;
 }
