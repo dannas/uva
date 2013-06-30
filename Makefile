@@ -22,9 +22,12 @@ $(OBJDIR)/%: $(SRCDIR)/%.cc
 	g++ $(CPPFLAGS) $^ -o $@
 
 check: $(PROGRAMS)
-	@for test in $(TESTS) ; do $(TESTRUNNER) $$test || exit 1 ; done
+	@for test in $(TESTS) ; do $(TESTRUNNER) $$test ; done
 
 list:
 	@for fname in $(SOURCES) ; do head -n 1 $$fname | sed 's|//||' ; done
+
 clean:
 	$(RM) $(OBJDIR)
+
+.PHONY: all check list clean
