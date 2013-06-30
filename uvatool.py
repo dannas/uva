@@ -17,7 +17,7 @@ USERID =    178401
 
 URL_PREFIX = 'http://uva.onlinejudge.org/external/'
 
-class HtmlImageDownloader(HTMLParser):
+class HtmlImageCollector(HTMLParser):
     def __init__(self):
         HTMLParser.__init__(self)
         self.fnames = []
@@ -101,9 +101,9 @@ def download_problem(path, url):
     payload = open(path).read()
     urldir = join(URL_PREFIX, dname(problemid))
     dirpath = os.path.dirname(path)
-    d = HtmlImageDownloader()
-    d.feed(payload)
-    for f in d.fnames:
+    c = HtmlImageCollector()
+    c.feed(payload)
+    for f in c.fnames:
         download(join(dirpath, f), join(urldir, f))
 
 def view(problemid):
