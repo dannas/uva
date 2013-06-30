@@ -1,11 +1,12 @@
-OBJDIR = obj
-SRCDIR = src
-SOURCES = $(wildcard $(SRCDIR)/*.cc)
-PROGRAMS = $(patsubst $(SRCDIR)/%.cc, $(OBJDIR)/%, $(SOURCES))
-TESTS = $(patsubst $(OBJDIR)/%, %, $(PROGRAMS))
+OBJDIR = 	 obj
+SRCDIR = 	 src
+SOURCES = 	 $(wildcard $(SRCDIR)/*.cc)
+PROGRAMS = 	 $(patsubst $(SRCDIR)/%.cc, $(OBJDIR)/%, $(SOURCES))
+TESTS = 	 $(patsubst $(OBJDIR)/%, %, $(PROGRAMS))
+
 TESTRUNNER = python uvatool.py test
-CPPFLAGS = -Wall -g -lm
-RM = rm -rf
+CPPFLAGS =   -Wall -g -lm
+RM = 	     rm -rf
 
 all: $(PROGRAMS)
 
