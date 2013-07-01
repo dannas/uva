@@ -139,9 +139,6 @@ def testcases(infile):
                 output.append(line)
     yield (input, output)
 
-def split(s, sep=None):
-    return [t for t in s.split(sep) if t]
-
 def runtest(case, fname):
     ENDC = '\033[0;m'
     FAILURE = '\033[1;31m'
@@ -152,7 +149,7 @@ def runtest(case, fname):
 
     val, _ = proc.communicate('\n'.join(input))
 
-    diff = unified_diff(split(val,'\n'), expected,
+    diff = unified_diff(val.strip().split('\n'), expected,
                         fromfile='output', tofile='expected',
                         lineterm='')
     diff = list(diff)
