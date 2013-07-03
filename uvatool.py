@@ -12,6 +12,8 @@ import re
 import subprocess
 import sys
 
+EDITOR = 'vi'
+BROWSER = 'firefox'
 USERNAME = 'dannas'
 USERID =    178401
 
@@ -111,7 +113,7 @@ def view(problemid):
     if not os.path.exists(path):
         url = os.path.join(URL_PREFIX, fname(problemid))
         download_problem(path, url)
-    subprocess.call(['firefox', path])
+    subprocess.call([BROWSER, path])
 
 def testcases(infile):
     def tokenizer():
@@ -195,7 +197,7 @@ def edit(problemid):
         content = TEMPLATE % (problemid, c.title, input, output)
         with open(path, 'w+') as f:
             f.write(content)
-    subprocess.call(['vi', path])
+    subprocess.call([EDITOR, path])
 
 # TODO(dannas): Use argparse
 problemid = int(sys.argv[2])
