@@ -65,10 +65,10 @@ class HtmlTestcaseCollector(HTMLParser):
             #
             # .. handle_data() is called a second time with data=''
             self.intitle = False
-        elif self.inheader and data.lower() == 'sample input':
+        elif self.inheader and data.lower().startswith('sample input'):
             self.state = INPUT_HEADER_SEEN
-        elif self.inheader and (data.lower() == 'sample output' or
-                data.lower() == 'output for sample input'):
+        elif self.inheader and (data.lower().startswith('sample output') or
+                data.lower().startswith('output for sample input')):
             self.state = OUTPUT_HEADER_SEEN
         elif self.tag == 'pre' and self.state == INPUT_HEADER_SEEN:
             self.input = data.split('\n')
