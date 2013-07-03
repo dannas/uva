@@ -1,6 +1,7 @@
 OBJDIR = 	 obj
 SRCDIR = 	 src
 SOURCES = 	 $(wildcard $(SRCDIR)/*.cc)
+UNSOLVED =   $(shell git status -s | grep '??' | sed 's/?? //')
 PROGRAMS = 	 $(patsubst $(SRCDIR)/%.cc, $(OBJDIR)/%, $(SOURCES))
 TESTS = 	 $(patsubst $(OBJDIR)/%, %, $(PROGRAMS))
 
@@ -28,6 +29,8 @@ check: $(PROGRAMS)
 list:
 	@for fname in $(SOURCES) ; do head -n 1 $$fname | sed 's|//||' ; done
 
+list-unsolved:
+	@for fname in $(UNSOLVED); do head -n 1 $$fname | sed 's|//||' ; done
 clean:
 	$(RM) $(OBJDIR)
 
