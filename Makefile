@@ -34,4 +34,4 @@ list-unsolved:
 clean:
 	$(RM) $(OBJDIR)
 
-.PHONY: all check list clean
+.PHONY: all check list list-unsolved clean 
