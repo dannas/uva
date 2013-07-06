@@ -20,6 +20,23 @@ USERID =    178401
 
 URL_PREFIX = 'http://uva.onlinejudge.org/external/'
 
+TEMPLATE = """
+// %d - %s
+
+%s
+
+%s
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+}
+"""
+
+
 class HtmlImageCollector(HTMLParser):
     def __init__(self):
         HTMLParser.__init__(self)
@@ -171,22 +188,6 @@ def test(args):
     infile = open(fname + '.cc')
     for case in testcases(infile):
         runtest(case, binary)
-
-TEMPLATE = """
-// %d - %s
-
-%s
-
-%s
-
-#include <iostream>
-
-using namespace std;
-
-int main()
-{
-}
-"""
 
 def edit(args):
     problemid = args.problemid
