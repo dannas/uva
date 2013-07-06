@@ -20,8 +20,7 @@ USERID =    178401
 
 URL_PREFIX = 'http://uva.onlinejudge.org/external/'
 
-TEMPLATE = """
-// %d - %s
+TEMPLATE = """// %d - %s
 
 %s
 
@@ -35,7 +34,6 @@ int main()
 {
 }
 """
-
 
 class HtmlImageCollector(HTMLParser):
     def __init__(self):
@@ -126,14 +124,6 @@ def download_problem(path, url):
     for f in c.fnames:
         download(join(dirpath, f), join(urldir, f))
 
-def view(args):
-    problemid = args.problemid
-    path =  os.path.join('problem', fname(problemid))
-    if not os.path.exists(path):
-        url = os.path.join(URL_PREFIX, fname(problemid))
-        download_problem(path, url)
-    subprocess.call([BROWSER, path])
-
 def testcases(infile):
     def tokenizer():
         for line in infile:
@@ -180,6 +170,14 @@ def runtest(case, fname):
         print '\n'.join(list(diff))
     else:
         print '%s %sPASS%s' % (os.path.basename(fname), SUCCESS, ENDC)
+
+def view(args):
+    problemid = args.problemid
+    path =  os.path.join('problem', fname(problemid))
+    if not os.path.exists(path):
+        url = os.path.join(URL_PREFIX, fname(problemid))
+        download_problem(path, url)
+    subprocess.call([BROWSER, path])
 
 def test(args):
     sp = str(args.problemid)
