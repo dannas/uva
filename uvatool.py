@@ -211,19 +211,22 @@ def main():
     # view command
     subparser = subparsers.add_parser('view',
                         help='View a problem description in a browser')
-    subparser.add_argument('problemid', action='store', type=int)
+    subparser.add_argument('problemid', action='store', type=int,
+                           help='The uva id of the problem')
     subparser.set_defaults(func=view)
 
     # test command
     subparser = subparsers.add_parser('test',
                         help='Run the test cases stored in the .cc file')
-    subparser.add_argument('problemid', action='store', type=int)
+    subparser.add_argument('problemid', action='store', type=int,
+                           help='The uva id of the problem')
     subparser.set_defaults(func=test)
 
     # edit command
     subparser = subparsers.add_parser('edit',
                         help='Open the .cc file, with testcases inserted')
-    subparser.add_argument('problemid', action='store', type=int)
+    subparser.add_argument('problemid', action='store', type=int,
+                           help='The uva id of the problem')
     subparser.set_defaults(func=edit)
 
     args = parser.parse_args()
