@@ -11,6 +11,7 @@ import os
 import re
 import subprocess
 import sys
+import argparse
 
 EDITOR = 'vi'
 BROWSER = 'firefox'
@@ -108,7 +109,8 @@ def download_problem(path, url):
     for f in c.fnames:
         download(join(dirpath, f), join(urldir, f))
 
-def view(problemid):
+def view(args):
+    problemid = args.problemid
     path =  os.path.join('problem', fname(problemid))
     if not os.path.exists(path):
         url = os.path.join(URL_PREFIX, fname(problemid))
@@ -162,9 +164,10 @@ def runtest(case, fname):
     else:
         print '%s %sPASS%s' % (os.path.basename(fname), SUCCESS, ENDC)
 
-def test(problemid):
-    binary = os.path.abspath(os.path.join('obj', str(problemid)))
-    fname = os.path.abspath(os.path.join('src', str(problemid)))
+def test(args):
+    sp = str(args.problemid)
+    binary = os.path.abspath(os.path.join('obj', sp))
+    fname = os.path.abspath(os.path.join('src', sp))
     infile = open(fname + '.cc')
     for case in testcases(infile):
         runtest(case, binary)
@@ -185,7 +188,8 @@ int main()
 }
 """
 
-def edit(problemid):
+def edit(args):
+    problemid = args.problemid
     path = os.path.abspath(os.path.join('src', str(problemid)) + '.cc')
     if not os.path.exists(path):
         htmlfile = os.path.join('problem', fname(problemid))
@@ -199,12 +203,32 @@ def edit(problemid):
             f.write(content)
     subprocess.call([EDITOR, path])
 
-# TODO(dannas): Use argparse
-problemid = int(sys.argv[2])
-if sys.argv[1] == "view":
-    view(problemid)
-elif sys.argv[1] == "test":
-    test(problemid)
-elif sys.argv[1] == "edit":
-    edit(problemid)
+def main():
+    parser = argparse.ArgumentParser(
+                        description='Handle uva problem coding.')
+    subparsers = parser.add_subparsers(title='subcommands')
+
+    # view command
+    subparser = subparsers.add_parser('view',
+                        help='View a problem description in a browser')
+    subparser.add_argument('problemid', action='store', type=int)
+    subparser.set_defaults(func=view)
+
+    # test command
+    subparser = subparsers.add_parser('test',
+                        help='Run the test cases stored in the .cc file')
+    subparser.add_argument('problemid', action='store', type=int)
+    subparser.set_defaults(func=test)
+
+    # edit command
+    subparser = subparsers.add_parser('edit',
+                        help='Open the .cc file, with testcases inserted')
+    subparser.add_argument('problemid', action='store', type=int)
+    subparser.set_defaults(func=edit)
+
+    args = parser.parse_args()
+    args.func(args)
+
+if __name__ == '__main__':
+    main()
 
