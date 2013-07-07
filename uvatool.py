@@ -173,6 +173,11 @@ def runtest(case, fname):
 
 def view(args):
     problemid = args.problemid
+
+    global BROWSER
+    if args.text:
+        BROWSER = 'w3m'
+
     path =  os.path.join('problem', fname(problemid))
     if not os.path.exists(path):
         url = os.path.join(URL_PREFIX, fname(problemid))
@@ -212,6 +217,8 @@ def main():
                         help='View a problem description in a browser')
     subparser.add_argument('problemid', action='store', type=int,
                            help='The uva id of the problem')
+    subparser.add_argument('--text', action='store_true',
+                           help='display the htmlfile in the terminal')
     subparser.set_defaults(func=view)
 
     # test command
