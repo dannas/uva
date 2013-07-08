@@ -207,6 +207,16 @@ def edit(args):
             f.write(content)
     subprocess.call([EDITOR, path])
 
+def hint(args):
+    problemid = args.problemid
+    url = 'http://www.algorithmist.com/index.php/UVa_%d' % problemid
+
+    global BROWSER
+    if args.text:
+        BROWSER = 'w3m'
+
+    subprocess.call([BROWSER, url])
+
 def main():
     parser = argparse.ArgumentParser(
                         description='Handle uva problem coding.')
@@ -234,6 +244,15 @@ def main():
     subparser.add_argument('problemid', action='store', type=int,
                            help='The uva id of the problem')
     subparser.set_defaults(func=edit)
+
+    # hint command
+    subparser = subparsers.add_parser('hint',
+                        help='View a hint for the problem in a browser')
+    subparser.add_argument('problemid', action='store', type=int,
+                           help='The uva id of the problem')
+    subparser.add_argument('--text', action='store_true',
+                           help='display the htmlfile in the terminal')
+    subparser.set_defaults(func=hint)
 
     args = parser.parse_args()
     args.func(args)
