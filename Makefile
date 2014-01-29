@@ -6,7 +6,7 @@ PROGRAMS = 	 $(patsubst $(SRCDIR)/%.cc, $(OBJDIR)/%, $(SOURCES))
 TESTS = 	 $(patsubst $(OBJDIR)/%, %, $(PROGRAMS))
 
 TESTRUNNER = python uvatool.py test
-CPPFLAGS =   -Wall -g -lm
+CPPFLAGS =   -Wall -g -lm -std=c++11
 RM = 	     rm -rf
 
 all: $(PROGRAMS)
