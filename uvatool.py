@@ -113,7 +113,7 @@ def download(path, url):
     with open(path, 'w+') as f:
         f.write(payload)
 
-def download_problem(path, url):
+def download_problem(path, url, problemid):
     join = os.path.join
     download(path, url)
     payload = open(path).read()
@@ -181,7 +181,7 @@ def view(args):
     path =  os.path.join('problem', fname(problemid))
     if not os.path.exists(path):
         url = os.path.join(URL_PREFIX, fname(problemid))
-        download_problem(path, url)
+        download_problem(path, url, problemid)
     subprocess.call([BROWSER, path])
 
 def test(args):
